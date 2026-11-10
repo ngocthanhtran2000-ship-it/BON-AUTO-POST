@@ -1,206 +1,32 @@
-<!DOCTYPE html>
-
-<html lang="vi">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>BON AUTO POST</title>
-
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fbf8f0"><title>BON AUTO POST</title>
 <style>
-
-*{box-sizing:border-box}
-
-body{margin:0;background:#f7f6f2;color:#292929;font-family:Arial,sans-serif}
-
-header{background:#fff;padding:24px 18px;text-align:center;border-bottom:2px solid #c6a45c}
-
-h1{color:#b18a39;letter-spacing:2px;margin:0}
-
-header p{font-size:11px;letter-spacing:3px}
-
-main{max-width:700px;margin:auto;padding:18px}
-
-.card{background:white;padding:20px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0000000b}
-
-h2{font-size:17px;color:#a17b32}
-
-label{display:block;font-weight:bold;margin:13px 0 6px;font-size:13px}
-
-input,textarea,select{width:100%;padding:13px;border:1px solid #ddd;border-radius:8px;font-size:15px;background:#fff}
-
-textarea{min-height:85px;resize:vertical}
-
-button{border:0;border-radius:8px;padding:14px;background:#b8954b;color:white;font-weight:bold;width:100%;margin-top:12px;font-size:15px}
-
-button.secondary{background:#292929}
-
-.result{white-space:pre-wrap;line-height:1.6;background:#faf9f5;padding:14px;border-radius:8px;min-height:100px}
-
-.gold{color:#b18a39}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<h1>BON AUTO POST</h1>
-
-<p>APARTMENT MARKETING SYSTEM</p>
-
-</header>
-
-<main>
-
-<div class="card">
-
-<h2>01. THÔNG TIN CĂN HỘ</h2>
-
-<label>Loại căn hộ</label>
-
-<select id="type">
-
-<option>Studio</option>
-
-<option>Duplex</option>
-
-<option>1 Bedroom</option>
-
-<option>2 Bedrooms</option>
-
-<option>Penthouse</option>
-
-</select>
-
-<label>Địa chỉ / Đường</label>
-
-<input id="address" placeholder="Ví dụ: Cửu Long, Tân Bình">
-
-<label>Giá thuê</label>
-
-<input id="price" placeholder="Ví dụ: 7 triệu/tháng">
-
-<label>Ưu điểm căn hộ</label>
-
-<textarea id="features" placeholder="Ban công, full nội thất, máy giặt riêng..."></textarea>
-
-<label>Vị trí / Tiện ích</label>
-
-<textarea id="location" placeholder="Gần sân bay, nhà ga T3..."></textarea>
-
-<label>Hình ảnh căn hộ</label>
-
-<input type="file" id="photos" accept="image/*" multiple>
-
-</div>
-
-<div class="card">
-
-<h2>02. TẠO NỘI DUNG</h2>
-
-<button onclick="generate('vi')">TẠO BÀI TIẾNG VIỆT</button>
-
-<button class="secondary" onclick="generate('en')">CREATE ENGLISH POST</button>
-
-</div>
-
-<div class="card">
-
-<h2>03. NỘI DUNG BÀI ĐĂNG</h2>
-
-<div id="output" class="result">Bài đăng của bạn sẽ xuất hiện ở đây...</div>
-
-<button onclick="copyPost()">SAO CHÉP BÀI ĐĂNG</button>
-
-<button class="secondary" onclick="openMarketplace()">MỞ FACEBOOK MARKETPLACE</button>
-
-</div>
-
-<div class="card">
-
-<h2>04. THÔNG TIN LIÊN HỆ</h2>
-
-<p><b class="gold">BON – NHÀ CỦA BON</b></p>
-
-<p>Hotline / Zalo: 0899070432</p>
-
-<p>Hỗ trợ tìm căn hộ tại TP.HCM</p>
-
-</div>
-
-</main>
-
+:root{--g:#b88a36;--gold:#e6c77e;--ink:#29251d;--muted:#777064;--paper:#fbf8f0;--line:#eadfc9;--soft:#f4eddf}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:linear-gradient(120deg,#fff,#f5ecd9);border-bottom:1px solid var(--line);padding:22px 18px}.wrap{max-width:1050px;margin:auto}.brand{display:flex;align-items:center;gap:12px}.mark{width:48px;height:48px;border:1.5px solid var(--g);border-radius:15px;display:grid;place-items:center;color:var(--g);font-weight:900;background:white}.brand h1{font-size:21px;letter-spacing:1.6px;margin:0}.brand p{font-size:11px;color:var(--muted);margin:4px 0 0;letter-spacing:1px}main{max-width:1050px;margin:22px auto;padding:0 14px 45px}.hero{padding:10px 0 16px}.hero h2{font-size:25px;margin:0 0 8px}.hero p,.note{color:var(--muted);line-height:1.5;font-size:13px}.tags span{display:inline-block;background:#f4ead5;color:#79571c;padding:5px 9px;border-radius:30px;font-size:11px;font-weight:bold;margin:3px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:0 5px 20px #4b37100a}.panel h3{margin:0 0 13px;font-size:16px;color:#896521}.field{margin:11px 0}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;background:white;font:inherit;color:var(--ink)}.field textarea{min-height:78px}.row{display:flex;gap:9px}.row>*{flex:1;min-width:0}.btn{border:0;border-radius:11px;padding:12px 14px;font-weight:750;cursor:pointer;font-size:13px}.primary{background:linear-gradient(110deg,#b88a36,#e5c77f);color:#241b0b}.secondary{background:var(--soft);color:#624919;border:1px solid var(--line)}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.result{white-space:pre-wrap;background:#fffdf8;border:1px dashed var(--gold);border-radius:11px;padding:13px;min-height:95px;line-height:1.55;font-size:14px}.full{grid-column:1/-1}.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{border:1px dashed #d8c49c;border-radius:12px;padding:9px;background:#fffdf8}.photo b{font-size:12px;display:block}.photo small{font-size:11px;color:var(--muted);display:block;min-height:28px}.photo input{width:100%;font-size:11px;margin-top:6px}.photo img{display:none;width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:6px}.warning{background:#fff7e6;border:1px solid #ecd7a7;padding:11px;border-radius:10px;font-size:12px;line-height:1.5;color:#70511c;margin-top:10px}footer{text-align:center;color:var(--muted);font-size:11px;padding:18px}@media(max-width:700px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.row{flex-direction:column}.hero h2{font-size:22px}}
+</style></head><body>
+<header><div class="wrap brand"><div class="mark">BON</div><div><h1>BON AUTO POST</h1><p>AI CONTENT STUDIO · WHITE & GOLD</p></div></div></header>
+<main><section class="hero"><h2>Tạo bài đăng căn hộ nhanh hơn</h2><p>Nhập tên đường và dạng phòng. Chuẩn bị nội dung, hashtag và bộ 10 góc ảnh cho bài đăng.</p><div class="tags"><span>10 bài/ngày</span><span>10 góc ảnh/bài</span><span>Facebook Groups</span></div></section>
+<div class="grid">
+<section class="panel"><h3>01 · THÔNG TIN CĂN HỘ</h3>
+<div class="field"><label>Tên đường / khu vực *</label><input id="street" placeholder="Ví dụ: Cửu Long, Bình Giã, Phổ Quang"></div>
+<div class="row"><div class="field"><label>Dạng phòng</label><select id="room"><option>Studio</option><option>1PN</option><option>2PN</option><option>Duplex</option><option>Penthouse</option></select></div><div class="field"><label>Ngôn ngữ</label><select id="lang"><option>Tiếng Việt</option><option>English</option><option>Song ngữ Việt - Anh</option></select></div></div>
+<div class="field"><label>Ưu điểm có thật</label><textarea id="features" placeholder="Ban công, full nội thất, máy giặt riêng..."></textarea></div>
+<div class="row"><div class="field"><label>Giá thuê (nếu có)</label><input id="price" placeholder="Ví dụ: 7,5 triệu/tháng"></div><div class="field"><label>Diện tích (nếu có)</label><input id="area" placeholder="Ví dụ: 45m²"></div></div>
+<div class="btnrow"><button class="btn primary" id="postPrompt">✦ Tạo bài bằng ChatGPT</button><button class="btn secondary" id="imgPrompt">Tạo prompt 10 ảnh</button></div><p class="note">Bản đầu mở ChatGPT với yêu cầu đã điền sẵn. Kết nối AI trực tiếp cần máy chủ bảo mật và API key; không đặt API key trong GitHub công khai.</p></section>
+<section class="panel"><h3>02 · BÀI VIẾT & HASHTAG</h3><div id="output" class="result">Bài viết sẽ xuất hiện ở đây sau khi bạn dán nội dung ChatGPT vào.</div><div class="field"><label>Dán bài ChatGPT tạo ra để lưu tại đây</label><textarea id="paste" placeholder="Dán nội dung bài viết hoàn chỉnh..."></textarea></div><div class="btnrow"><button class="btn secondary" id="usePaste">Cập nhật bản xem trước</button><button class="btn secondary" id="copy">Sao chép bài</button></div><div class="warning">Liên hệ cố định: <b>0899070432 – Ngân Bon (Nhà của Bon)</b>. Không tự bịa giá, diện tích hoặc tiện ích.</div></section>
+<section class="panel full"><h3>03 · BỘ 10 ẢNH – 10 GÓC CỦA CÙNG MỘT CĂN HỘ</h3><p class="note">Tải ảnh thật của cùng một căn hộ vào từng ô. Ảnh xem trước chỉ nằm trên thiết bị của bạn, chưa được tải lên máy chủ.</p><div class="photos" id="photos"></div><div class="warning">Ảnh AI hoặc ảnh mạng chỉ là ảnh minh họa nếu không phải ảnh căn hộ thật. Không dùng ảnh minh họa khiến khách hiểu nhầm là phòng thực tế.</div></section>
+<section class="panel full"><h3>04 · DANH SÁCH GROUP FACEBOOK</h3><div class="field"><label>Link Group</label><input id="groupLink" placeholder="Dán link Facebook Group của bạn"></div><div class="btnrow"><button class="btn secondary" id="saveGroup">Lưu Group</button><button class="btn secondary" id="openGroup">Mở Group</button></div><div id="groups" class="note">Chưa có Group nào được lưu.</div><div class="warning">Bản này hỗ trợ lưu link và mở Group để bạn đăng. Quyền đăng trong Group không tự động cấp quyền cho ứng dụng bên ngoài.</div></section>
+</div></main><footer>BON AUTO POST · Phiên bản giao diện khởi đầu</footer>
 <script>
-
-function val(id){return document.getElementById(id).value.trim()}
-
-function generate(lang){
-let type=val('type'), address=val('address'), price=val('price');
-
-let features=val('features'), location=val('location');
-
-if(!address){alert('Vui lòng nhập địa chỉ căn hộ');return}
-
-let vi=`🏠 CHO THUÊ ${type.toUpperCase()} – ${address.toUpperCase()}
-
-✨ Không gian sống hiện đại, thiết kế tiện nghi và thoáng mát.
-
-💰 Giá thuê: ${price||'Liên hệ'}
-
-🛋️ Tiện nghi: ${features||'Đầy đủ tiện nghi'}
-
-📍 Vị trí: ${location||address}
-
-📞 LIÊN HỆ: 0899070432 – NGÂN BON
-
-Nhà của Bon – Hỗ trợ tư vấn miễn phí.
-
-#chothuecanho #canhoTPHCM #chdv #tanbinh #nhacuabon`;
-
-let en=`🏠 ${type.toUpperCase()} FOR RENT – ${address.toUpperCase()}
-
-✨ Modern and comfortable living space, designed for convenient everyday living.
-
-💰 Rental price: ${price||'Please contact us'}
-
-🛋️ Features: ${features||'Fully equipped'}
-
-📍 Location: ${location||address}
-
-📞 CONTACT: 0899070432 – NGAN BON
-
-NHÀ CỦA BON – Free consultation.
-
-#ApartmentForRent #SaigonApartment #ServicedApartment #TanBinh`;
-
-document.getElementById('output').textContent=lang==='vi'?vi:en;
-
-}
-
-function copyPost(){
-
-let text=document.getElementById('output').textContent;
-
-if(text.includes('xuất hiện')){alert('Vui lòng tạo bài trước');return}
-
-navigator.clipboard.writeText(text).then(()=>alert('Đã sao chép bài đăng!')).catch(()=>alert('Hãy chọn và sao chép nội dung thủ công.'));
-
-}
-
-function openMarketplace(){
-
-window.open('https://www.facebook.com/marketplace/create/rental','_blank');
-
-}
-
-</script>
-
-</body>
-
-</html>
+const $=id=>document.getElementById(id),phone='0899070432 – Ngân Bon (Nhà của Bon)';
+const angles=[['01 · Toàn cảnh căn phòng','Bố cục tổng thể và lối đi'],['02 · Khu vực giường ngủ','Giường, tab đầu giường và ánh sáng'],['03 · Khu vực bếp','Bếp, tủ bếp và thiết bị thực tế'],['04 · Nhà vệ sinh','Lavabo, vòi sen và khu vệ sinh'],['05 · Khu vực tiếp khách','Sofa, bàn và TV nếu có'],['06 · Cửa sổ & ánh sáng','Nguồn sáng và độ thông thoáng'],['07 · Ban công / view','Chỉ chụp nếu căn hộ thực sự có'],['08 · Tủ & khu lưu trữ','Tủ quần áo và chỗ chứa đồ'],['09 · Máy giặt / tiện ích','Chỉ chụp tiện ích có thật'],['10 · Chi tiết nội thất','Vật liệu, đèn và điểm nhấn']];
+function data(){return {street:$('street').value.trim(),room:$('room').value,lang:$('lang').value,features:$('features').value.trim(),price:$('price').value.trim(),area:$('area').value.trim()}}
+function basePrompt(){let d=data();if(!d.street){alert('Nhập tên đường hoặc khu vực trước nhé.');return ''}return 'Hãy viết bài đăng cho thuê căn hộ bằng '+d.lang+'. Loại phòng: '+d.room+'. Đường/khu vực: '+d.street+'. Ưu điểm đã xác nhận: '+(d.features||'Chưa cung cấp; không tự bịa')+'. Giá: '+(d.price||'Chưa cung cấp; không tự đặt giá')+'. Diện tích: '+(d.area||'Chưa cung cấp; không tự đặt diện tích')+'. Viết tiêu đề hấp dẫn, mô tả chuyên nghiệp, vị trí không bịa khoảng cách, CTA và hashtag. Liên hệ chính xác: '+phone+'. Không bịa tiện ích, ban công, cửa sổ, giá, diện tích hay khoảng cách.'}
+$('postPrompt').onclick=()=>{let p=basePrompt();if(p)window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank')};
+$('imgPrompt').onclick=()=>{let p=basePrompt();if(!p)return;p='Tạo bộ prompt cho 10 ảnh riêng biệt của CÙNG MỘT căn hộ '+data().room+' tại '+data().street+'. Giữ đồng nhất thiết kế, màu sắc, nội thất và ánh sáng. Không ghép collage. Ảnh minh họa, không khẳng định là ảnh thật. Các góc:\n'+angles.map(x=>x[0]+': '+x[1]).join('\n')+'\nTỷ lệ dọc 4:5.';window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank')};
+$('usePaste').onclick=()=>{$('output').textContent=$('paste').value.trim()||'Chưa có nội dung.'};
+$('copy').onclick=async()=>{let t=$('output').textContent;if(t==='Chưa có nội dung.'||t.startsWith('Bài viết sẽ')){alert('Chưa có bài để sao chép.');return}try{await navigator.clipboard.writeText(t);alert('Đã sao chép!')}catch(e){alert('Hãy chọn và sao chép thủ công.')}};
+angles.forEach((a,i)=>{let d=document.createElement('div');d.className='photo';d.innerHTML='<b>'+a[0]+'</b><small>'+a[1]+'</small><input type="file" accept="image/*"><img alt="Ảnh xem trước">';let input=d.querySelector('input'),img=d.querySelector('img');input.onchange=()=>{let f=input.files&&input.files[0];if(f){img.src=URL.createObjectURL(f);img.style.display='block'}};$('photos').appendChild(d)});
+function render(){let a=JSON.parse(localStorage.getItem('bonGroups')||'[]');$('groups').textContent=a.length?'Đã lưu: '+a.join(' · '):'Chưa có Group nào được lưu.'}
+$('saveGroup').onclick=()=>{let v=$('groupLink').value.trim();if(!v){alert('Dán link Group trước nhé.');return}let a=JSON.parse(localStorage.getItem('bonGroups')||'[]');if(!a.includes(v))a.push(v);localStorage.setItem('bonGroups',JSON.stringify(a));render();$('groupLink').value='';alert('Đã lưu trên thiết bị này.')};
+$('openGroup').onclick=()=>{let v=$('groupLink').value.trim()||JSON.parse(localStorage.getItem('bonGroups')||'[]').slice(-1)[0];if(v)window.open(v,'_blank');else alert('Dán hoặc lưu link Group trước nhé.')};render();
+</script></body></html>
