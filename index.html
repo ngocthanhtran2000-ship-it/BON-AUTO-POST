@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>BON AUTO POST</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#f7f6f2;color:#292929;font-family:Arial,sans-serif}
+
+header{background:#fff;padding:24px 18px;text-align:center;border-bottom:2px solid #c6a45c}
+
+h1{color:#b18a39;letter-spacing:2px;margin:0}
+
+header p{font-size:11px;letter-spacing:3px}
+
+main{max-width:700px;margin:auto;padding:18px}
+
+.card{background:white;padding:20px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0000000b}
+
+h2{font-size:17px;color:#a17b32}
+
+label{display:block;font-weight:bold;margin:13px 0 6px;font-size:13px}
+
+input,textarea,select{width:100%;padding:13px;border:1px solid #ddd;border-radius:8px;font-size:15px;background:#fff}
+
+textarea{min-height:85px;resize:vertical}
+
+button{border:0;border-radius:8px;padding:14px;background:#b8954b;color:white;font-weight:bold;width:100%;margin-top:12px;font-size:15px}
+
+button.secondary{background:#292929}
+
+.result{white-space:pre-wrap;line-height:1.6;background:#faf9f5;padding:14px;border-radius:8px;min-height:100px}
+
+.gold{color:#b18a39}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>BON AUTO POST</h1>
+
+<p>APARTMENT MARKETING SYSTEM</p>
+
+</header>
+
+<main>
+
+<div class="card">
+
+<h2>01. THÔNG TIN CĂN HỘ</h2>
+
+<label>Loại căn hộ</label>
+
+<select id="type">
+
+<option>Studio</option>
+
+<option>Duplex</option>
+
+<option>1 Bedroom</option>
+
+<option>2 Bedrooms</option>
+
+<option>Penthouse</option>
+
+</select>
+
+<label>Địa chỉ / Đường</label>
+
+<input id="address" placeholder="Ví dụ: Cửu Long, Tân Bình">
+
+<label>Giá thuê</label>
+
+<input id="price" placeholder="Ví dụ: 7 triệu/tháng">
+
+<label>Ưu điểm căn hộ</label>
+
+<textarea id="features" placeholder="Ban công, full nội thất, máy giặt riêng..."></textarea>
+
+<label>Vị trí / Tiện ích</label>
+
+<textarea id="location" placeholder="Gần sân bay, nhà ga T3..."></textarea>
+
+<label>Hình ảnh căn hộ</label>
+
+<input type="file" id="photos" accept="image/*" multiple>
+
+</div>
+
+<div class="card">
+
+<h2>02. TẠO NỘI DUNG</h2>
+
+<button onclick="generate('vi')">TẠO BÀI TIẾNG VIỆT</button>
+
+<button class="secondary" onclick="generate('en')">CREATE ENGLISH POST</button>
+
+</div>
+
+<div class="card">
+
+<h2>03. NỘI DUNG BÀI ĐĂNG</h2>
+
+<div id="output" class="result">Bài đăng của bạn sẽ xuất hiện ở đây...</div>
+
+<button onclick="copyPost()">SAO CHÉP BÀI ĐĂNG</button>
+
+<button class="secondary" onclick="openMarketplace()">MỞ FACEBOOK MARKETPLACE</button>
+
+</div>
+
+<div class="card">
+
+<h2>04. THÔNG TIN LIÊN HỆ</h2>
+
+<p><b class="gold">BON – NHÀ CỦA BON</b></p>
+
+<p>Hotline / Zalo: 0899070432</p>
+
+<p>Hỗ trợ tìm căn hộ tại TP.HCM</p>
+
+</div>
+
+</main>
+
+<script>
+
+function val(id){return document.getElementById(id).value.trim()}
+
+function generate(lang){
+let type=val('type'), address=val('address'), price=val('price');
+
+let features=val('features'), location=val('location');
+
+if(!address){alert('Vui lòng nhập địa chỉ căn hộ');return}
+
+let vi=`🏠 CHO THUÊ ${type.toUpperCase()} – ${address.toUpperCase()}
+
+✨ Không gian sống hiện đại, thiết kế tiện nghi và thoáng mát.
+
+💰 Giá thuê: ${price||'Liên hệ'}
+
+🛋️ Tiện nghi: ${features||'Đầy đủ tiện nghi'}
+
+📍 Vị trí: ${location||address}
+
+📞 LIÊN HỆ: 0899070432 – NGÂN BON
+
+Nhà của Bon – Hỗ trợ tư vấn miễn phí.
+
+#chothuecanho #canhoTPHCM #chdv #tanbinh #nhacuabon`;
+
+let en=`🏠 ${type.toUpperCase()} FOR RENT – ${address.toUpperCase()}
+
+✨ Modern and comfortable living space, designed for convenient everyday living.
+
+💰 Rental price: ${price||'Please contact us'}
+
+🛋️ Features: ${features||'Fully equipped'}
+
+📍 Location: ${location||address}
+
+📞 CONTACT: 0899070432 – NGAN BON
+
+NHÀ CỦA BON – Free consultation.
+
+#ApartmentForRent #SaigonApartment #ServicedApartment #TanBinh`;
+
+document.getElementById('output').textContent=lang==='vi'?vi:en;
+
+}
+
+function copyPost(){
+
+let text=document.getElementById('output').textContent;
+
+if(text.includes('xuất hiện')){alert('Vui lòng tạo bài trước');return}
+
+navigator.clipboard.writeText(text).then(()=>alert('Đã sao chép bài đăng!')).catch(()=>alert('Hãy chọn và sao chép nội dung thủ công.'));
+
+}
+
+function openMarketplace(){
+
+window.open('https://www.facebook.com/marketplace/create/rental','_blank');
+
+}
+
+</script>
+
+</body>
+
+</html>
